@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.code.community.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.code.community.pojo.User" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="gender" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <arg column="card" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="nation" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="room_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="political_status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="company" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="company_location" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="check_in_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="has_married" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <arg column="relation" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="is_delete" jdbcType="TINYINT" javaType="java.lang.Byte" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, name, gender, card, nation, room_id, political_status, phone, company, company_location, 
+    check_in_time, has_married, relation, create_time, update_time, is_delete
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.code.community.pojo.UserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.code.community.pojo.UserExample" >
+    delete from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.code.community.pojo.User" >
+    insert into user (id, name, gender, 
+      card, nation, room_id, 
+      political_status, phone, company, 
+      company_location, check_in_time, has_married, 
+      relation, create_time, update_time, 
+      is_delete)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{gender,jdbcType=TINYINT}, 
+      #{card,jdbcType=VARCHAR}, #{nation,jdbcType=VARCHAR}, #{roomId,jdbcType=BIGINT}, 
+      #{politicalStatus,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, 
+      #{companyLocation,jdbcType=VARCHAR}, #{checkInTime,jdbcType=TIMESTAMP}, #{hasMarried,jdbcType=TINYINT}, 
+      #{relation,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.code.community.pojo.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="card != null" >
+        card,
+      </if>
+      <if test="nation != null" >
+        nation,
+      </if>
+      <if test="roomId != null" >
+        room_id,
+      </if>
+      <if test="politicalStatus != null" >
+        political_status,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="company != null" >
+        company,
+      </if>
+      <if test="companyLocation != null" >
+        company_location,
+      </if>
+      <if test="checkInTime != null" >
+        check_in_time,
+      </if>
+      <if test="hasMarried != null" >
+        has_married,
+      </if>
+      <if test="relation != null" >
+        relation,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="card != null" >
+        #{card,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null" >
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="roomId != null" >
+        #{roomId,jdbcType=BIGINT},
+      </if>
+      <if test="politicalStatus != null" >
+        #{politicalStatus,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="companyLocation != null" >
+        #{companyLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="checkInTime != null" >
+        #{checkInTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hasMarried != null" >
+        #{hasMarried,jdbcType=TINYINT},
+      </if>
+      <if test="relation != null" >
+        #{relation,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.code.community.pojo.UserExample" resultType="java.lang.Integer" >
+    select count(*) from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update user
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gender != null" >
+        gender = #{record.gender,jdbcType=TINYINT},
+      </if>
+      <if test="record.card != null" >
+        card = #{record.card,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nation != null" >
+        nation = #{record.nation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roomId != null" >
+        room_id = #{record.roomId,jdbcType=BIGINT},
+      </if>
+      <if test="record.politicalStatus != null" >
+        political_status = #{record.politicalStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.phone != null" >
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.company != null" >
+        company = #{record.company,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyLocation != null" >
+        company_location = #{record.companyLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkInTime != null" >
+        check_in_time = #{record.checkInTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.hasMarried != null" >
+        has_married = #{record.hasMarried,jdbcType=TINYINT},
+      </if>
+      <if test="record.relation != null" >
+        relation = #{record.relation,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isDelete != null" >
+        is_delete = #{record.isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update user
+    set id = #{record.id,jdbcType=BIGINT},
+      name = #{record.name,jdbcType=VARCHAR},
+      gender = #{record.gender,jdbcType=TINYINT},
+      card = #{record.card,jdbcType=VARCHAR},
+      nation = #{record.nation,jdbcType=VARCHAR},
+      room_id = #{record.roomId,jdbcType=BIGINT},
+      political_status = #{record.politicalStatus,jdbcType=INTEGER},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      company = #{record.company,jdbcType=VARCHAR},
+      company_location = #{record.companyLocation,jdbcType=VARCHAR},
+      check_in_time = #{record.checkInTime,jdbcType=TIMESTAMP},
+      has_married = #{record.hasMarried,jdbcType=TINYINT},
+      relation = #{record.relation,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      is_delete = #{record.isDelete,jdbcType=TINYINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.code.community.pojo.User" >
+    update user
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="card != null" >
+        card = #{card,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null" >
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="roomId != null" >
+        room_id = #{roomId,jdbcType=BIGINT},
+      </if>
+      <if test="politicalStatus != null" >
+        political_status = #{politicalStatus,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="companyLocation != null" >
+        company_location = #{companyLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="checkInTime != null" >
+        check_in_time = #{checkInTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hasMarried != null" >
+        has_married = #{hasMarried,jdbcType=TINYINT},
+      </if>
+      <if test="relation != null" >
+        relation = #{relation,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.code.community.pojo.User" >
+    update user
+    set name = #{name,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=TINYINT},
+      card = #{card,jdbcType=VARCHAR},
+      nation = #{nation,jdbcType=VARCHAR},
+      room_id = #{roomId,jdbcType=BIGINT},
+      political_status = #{politicalStatus,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      company = #{company,jdbcType=VARCHAR},
+      company_location = #{companyLocation,jdbcType=VARCHAR},
+      check_in_time = #{checkInTime,jdbcType=TIMESTAMP},
+      has_married = #{hasMarried,jdbcType=TINYINT},
+      relation = #{relation,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

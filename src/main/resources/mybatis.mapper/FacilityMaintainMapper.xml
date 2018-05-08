@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.code.community.mapper.FacilityMaintainMapper" >
+  <resultMap id="BaseResultMap" type="com.code.community.pojo.FacilityMaintain" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="facility_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="operator" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="maintain_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="amount" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="maintain_admin" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="detail_info" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="is_delete" jdbcType="TINYINT" javaType="java.lang.Byte" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, facility_id, operator, phone, maintain_time, amount, maintain_admin, detail_info, 
+    create_time, update_time, is_delete
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.code.community.pojo.FacilityMaintainExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from facility_maintain
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from facility_maintain
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from facility_maintain
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.code.community.pojo.FacilityMaintainExample" >
+    delete from facility_maintain
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.code.community.pojo.FacilityMaintain" >
+    insert into facility_maintain (id, facility_id, operator, 
+      phone, maintain_time, amount, 
+      maintain_admin, detail_info, create_time, 
+      update_time, is_delete)
+    values (#{id,jdbcType=BIGINT}, #{facilityId,jdbcType=BIGINT}, #{operator,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{maintainTime,jdbcType=TIMESTAMP}, #{amount,jdbcType=DOUBLE}, 
+      #{maintainAdmin,jdbcType=BIGINT}, #{detailInfo,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.code.community.pojo.FacilityMaintain" >
+    insert into facility_maintain
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="facilityId != null" >
+        facility_id,
+      </if>
+      <if test="operator != null" >
+        operator,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="maintainTime != null" >
+        maintain_time,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="maintainAdmin != null" >
+        maintain_admin,
+      </if>
+      <if test="detailInfo != null" >
+        detail_info,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="facilityId != null" >
+        #{facilityId,jdbcType=BIGINT},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="maintainTime != null" >
+        #{maintainTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="maintainAdmin != null" >
+        #{maintainAdmin,jdbcType=BIGINT},
+      </if>
+      <if test="detailInfo != null" >
+        #{detailInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.code.community.pojo.FacilityMaintainExample" resultType="java.lang.Integer" >
+    select count(*) from facility_maintain
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update facility_maintain
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.facilityId != null" >
+        facility_id = #{record.facilityId,jdbcType=BIGINT},
+      </if>
+      <if test="record.operator != null" >
+        operator = #{record.operator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null" >
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.maintainTime != null" >
+        maintain_time = #{record.maintainTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.amount != null" >
+        amount = #{record.amount,jdbcType=DOUBLE},
+      </if>
+      <if test="record.maintainAdmin != null" >
+        maintain_admin = #{record.maintainAdmin,jdbcType=BIGINT},
+      </if>
+      <if test="record.detailInfo != null" >
+        detail_info = #{record.detailInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isDelete != null" >
+        is_delete = #{record.isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update facility_maintain
+    set id = #{record.id,jdbcType=BIGINT},
+      facility_id = #{record.facilityId,jdbcType=BIGINT},
+      operator = #{record.operator,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      maintain_time = #{record.maintainTime,jdbcType=TIMESTAMP},
+      amount = #{record.amount,jdbcType=DOUBLE},
+      maintain_admin = #{record.maintainAdmin,jdbcType=BIGINT},
+      detail_info = #{record.detailInfo,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      is_delete = #{record.isDelete,jdbcType=TINYINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.code.community.pojo.FacilityMaintain" >
+    update facility_maintain
+    <set >
+      <if test="facilityId != null" >
+        facility_id = #{facilityId,jdbcType=BIGINT},
+      </if>
+      <if test="operator != null" >
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="maintainTime != null" >
+        maintain_time = #{maintainTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="maintainAdmin != null" >
+        maintain_admin = #{maintainAdmin,jdbcType=BIGINT},
+      </if>
+      <if test="detailInfo != null" >
+        detail_info = #{detailInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.code.community.pojo.FacilityMaintain" >
+    update facility_maintain
+    set facility_id = #{facilityId,jdbcType=BIGINT},
+      operator = #{operator,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      maintain_time = #{maintainTime,jdbcType=TIMESTAMP},
+      amount = #{amount,jdbcType=DOUBLE},
+      maintain_admin = #{maintainAdmin,jdbcType=BIGINT},
+      detail_info = #{detailInfo,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
