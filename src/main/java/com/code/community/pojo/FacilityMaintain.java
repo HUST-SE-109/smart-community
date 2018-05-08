@@ -23,9 +23,9 @@ public class FacilityMaintain {
 
     private Date updateTime;
 
-    private Byte isDelete;
+    private Boolean isDelete;
 
-    public FacilityMaintain(Long id, Long facilityId, String operator, String phone, Date maintainTime, Double amount, Long maintainAdmin, String detailInfo, Date createTime, Date updateTime, Byte isDelete) {
+    public FacilityMaintain(Long id, Long facilityId, String operator, String phone, Date maintainTime, Double amount, Long maintainAdmin, String detailInfo, Date createTime, Date updateTime, Boolean isDelete) {
         this.id = id;
         this.facilityId = facilityId;
         this.operator = operator;
@@ -123,11 +123,11 @@ public class FacilityMaintain {
         this.updateTime = updateTime;
     }
 
-    public Byte getIsDelete() {
+    public Boolean getIsDelete() {
         return isDelete;
     }
 
-    public void setIsDelete(Byte isDelete) {
+    public void setIsDelete(Boolean isDelete) {
         this.isDelete = isDelete;
     }
 }

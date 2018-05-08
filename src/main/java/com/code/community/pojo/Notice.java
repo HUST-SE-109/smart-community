@@ -13,11 +13,11 @@ public class Notice {
 
     private Long operatorId;
 
-    private Byte isDelete;
+    private Boolean isDelete;
 
     private String content;
 
-    public Notice(Long id, String title, Date createTime, Date updateTime, Long operatorId, Byte isDelete, String content) {
+    public Notice(Long id, String title, Date createTime, Date updateTime, Long operatorId, Boolean isDelete, String content) {
         this.id = id;
         this.title = title;
         this.createTime = createTime;
@@ -71,11 +71,11 @@ public class Notice {
         this.operatorId = operatorId;
     }
 
-    public Byte getIsDelete() {
+    public Boolean getIsDelete() {
         return isDelete;
     }
 
-    public void setIsDelete(Byte isDelete) {
+    public void setIsDelete(Boolean isDelete) {
         this.isDelete = isDelete;
     }
 

@@ -13,9 +13,9 @@ public class Street {
 
     private Date updateTime;
 
-    private Byte isDelete;
+    private Boolean isDelete;
 
-    public Street(Long id, String name, String desc, Date createTime, Date updateTime, Byte isDelete) {
+    public Street(Long id, String name, String desc, Date createTime, Date updateTime, Boolean isDelete) {
         this.id = id;
         this.name = name;
         this.desc = desc;
@@ -68,11 +68,11 @@ public class Street {
         this.updateTime = updateTime;
     }
 
-    public Byte getIsDelete() {
+    public Boolean getIsDelete() {
         return isDelete;
     }
 
-    public void setIsDelete(Byte isDelete) {
+    public void setIsDelete(Boolean isDelete) {
         this.isDelete = isDelete;
     }
 }

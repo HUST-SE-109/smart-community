@@ -25,9 +25,9 @@ public class Charge {
 
     private Date updateTime;
 
-    private Byte isDelete;
+    private Boolean isDelete;
 
-    public Charge(Long id, Long roomId, Integer type, Double amount, Date chargeTime, Date expireTime, Long operatorId, Integer payStyle, Integer status, Date createTime, Date updateTime, Byte isDelete) {
+    public Charge(Long id, Long roomId, Integer type, Double amount, Date chargeTime, Date expireTime, Long operatorId, Integer payStyle, Integer status, Date createTime, Date updateTime, Boolean isDelete) {
         this.id = id;
         this.roomId = roomId;
         this.type = type;
@@ -134,11 +134,11 @@ public class Charge {
         this.updateTime = updateTime;
     }
 
-    public Byte getIsDelete() {
+    public Boolean getIsDelete() {
         return isDelete;
     }
 
-    public void setIsDelete(Byte isDelete) {
+    public void setIsDelete(Boolean isDelete) {
         this.isDelete = isDelete;
     }
 }

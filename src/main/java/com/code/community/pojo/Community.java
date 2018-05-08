@@ -15,9 +15,9 @@ public class Community {
 
     private Date updateTime;
 
-    private Byte isDelete;
+    private Boolean isDelete;
 
-    public Community(Long id, String name, Long streetId, Long propertyId, Date createTime, Date updateTime, Byte isDelete) {
+    public Community(Long id, String name, Long streetId, Long propertyId, Date createTime, Date updateTime, Boolean isDelete) {
         this.id = id;
         this.name = name;
         this.streetId = streetId;
@@ -79,11 +79,11 @@ public class Community {
         this.updateTime = updateTime;
     }
 
-    public Byte getIsDelete() {
+    public Boolean getIsDelete() {
         return isDelete;
     }
 
-    public void setIsDelete(Byte isDelete) {
+    public void setIsDelete(Boolean isDelete) {
         this.isDelete = isDelete;
     }
 }

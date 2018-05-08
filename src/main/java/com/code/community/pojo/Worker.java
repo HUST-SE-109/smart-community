@@ -11,7 +11,7 @@ public class Worker {
 
     private String name;
 
-    private Byte gender;
+    private Boolean gender;
 
     private String nation;
 
@@ -33,9 +33,9 @@ public class Worker {
 
     private Date updateTime;
 
-    private Byte isDelete;
+    private Boolean isDelete;
 
-    public Worker(Long id, String account, String password, String name, Byte gender, String nation, String card, Integer politicalStatus, String phone, String position, Double wage, Date beginTime, Date endTime, Integer status, Date updateTime, Byte isDelete) {
+    public Worker(Long id, String account, String password, String name, Boolean gender, String nation, String card, Integer politicalStatus, String phone, String position, Double wage, Date beginTime, Date endTime, Integer status, Date updateTime, Boolean isDelete) {
         this.id = id;
         this.account = account;
         this.password = password;
@@ -90,11 +90,11 @@ public class Worker {
         this.name = name == null ? null : name.trim();
     }
 
-    public Byte getGender() {
+    public Boolean getGender() {
         return gender;
     }
 
-    public void setGender(Byte gender) {
+    public void setGender(Boolean gender) {
         this.gender = gender;
     }
 
@@ -178,11 +178,11 @@ public class Worker {
         this.updateTime = updateTime;
     }
 
-    public Byte getIsDelete() {
+    public Boolean getIsDelete() {
         return isDelete;
     }
 
-    public void setIsDelete(Byte isDelete) {
+    public void setIsDelete(Boolean isDelete) {
         this.isDelete = isDelete;
     }
 }

@@ -8,7 +8,7 @@
       <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="operator_id" jdbcType="BIGINT" javaType="java.lang.Long" />
-      <arg column="is_delete" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <arg column="is_delete" jdbcType="BIT" javaType="java.lang.Boolean" />
     </constructor>
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.code.community.pojo.Notice" >
@@ -18,7 +18,7 @@
       <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="operator_id" jdbcType="BIGINT" javaType="java.lang.Long" />
-      <arg column="is_delete" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <arg column="is_delete" jdbcType="BIT" javaType="java.lang.Boolean" />
       <arg column="content" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
@@ -139,7 +139,7 @@
       update_time, operator_id, is_delete, 
       content)
     values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{operatorId,jdbcType=BIGINT}, #{isDelete,jdbcType=TINYINT}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{operatorId,jdbcType=BIGINT}, #{isDelete,jdbcType=BIT}, 
       #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.code.community.pojo.Notice" >
@@ -184,7 +184,7 @@
         #{operatorId,jdbcType=BIGINT},
       </if>
       <if test="isDelete != null" >
-        #{isDelete,jdbcType=TINYINT},
+        #{isDelete,jdbcType=BIT},
       </if>
       <if test="content != null" >
         #{content,jdbcType=LONGVARCHAR},
@@ -216,7 +216,7 @@
         operator_id = #{record.operatorId,jdbcType=BIGINT},
       </if>
       <if test="record.isDelete != null" >
-        is_delete = #{record.isDelete,jdbcType=TINYINT},
+        is_delete = #{record.isDelete,jdbcType=BIT},
       </if>
       <if test="record.content != null" >
         content = #{record.content,jdbcType=LONGVARCHAR},
@@ -233,7 +233,7 @@
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       operator_id = #{record.operatorId,jdbcType=BIGINT},
-      is_delete = #{record.isDelete,jdbcType=TINYINT},
+      is_delete = #{record.isDelete,jdbcType=BIT},
       content = #{record.content,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -246,7 +246,7 @@
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       operator_id = #{record.operatorId,jdbcType=BIGINT},
-      is_delete = #{record.isDelete,jdbcType=TINYINT}
+      is_delete = #{record.isDelete,jdbcType=BIT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -267,7 +267,7 @@
         operator_id = #{operatorId,jdbcType=BIGINT},
       </if>
       <if test="isDelete != null" >
-        is_delete = #{isDelete,jdbcType=TINYINT},
+        is_delete = #{isDelete,jdbcType=BIT},
       </if>
       <if test="content != null" >
         content = #{content,jdbcType=LONGVARCHAR},
@@ -281,7 +281,7 @@
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       operator_id = #{operatorId,jdbcType=BIGINT},
-      is_delete = #{isDelete,jdbcType=TINYINT},
+      is_delete = #{isDelete,jdbcType=BIT},
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -291,7 +291,7 @@
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       operator_id = #{operatorId,jdbcType=BIGINT},
-      is_delete = #{isDelete,jdbcType=TINYINT}
+      is_delete = #{isDelete,jdbcType=BIT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

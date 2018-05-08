@@ -21,9 +21,9 @@ public class Event {
 
     private Date updateTime;
 
-    private Byte isDelete;
+    private Boolean isDelete;
 
-    public Event(Long id, Integer type, Date reportTime, Date handleTime, Integer status, Long operatorId, String detailInfo, Date createTime, Date updateTime, Byte isDelete) {
+    public Event(Long id, Integer type, Date reportTime, Date handleTime, Integer status, Long operatorId, String detailInfo, Date createTime, Date updateTime, Boolean isDelete) {
         this.id = id;
         this.type = type;
         this.reportTime = reportTime;
@@ -112,11 +112,11 @@ public class Event {
         this.updateTime = updateTime;
     }
 
-    public Byte getIsDelete() {
+    public Boolean getIsDelete() {
         return isDelete;
     }
 
-    public void setIsDelete(Byte isDelete) {
+    public void setIsDelete(Boolean isDelete) {
         this.isDelete = isDelete;
     }
 }

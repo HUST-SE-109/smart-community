@@ -7,7 +7,7 @@ public class ForeignPerson {
 
     private String name;
 
-    private Byte gender;
+    private Boolean gender;
 
     private String card;
 
@@ -21,9 +21,9 @@ public class ForeignPerson {
 
     private Long operatorId;
 
-    private Byte isDelete;
+    private Boolean isDelete;
 
-    public ForeignPerson(Long id, String name, Byte gender, String card, Integer age, Date comeTime, String reason, Date updateTime, Long operatorId, Byte isDelete) {
+    public ForeignPerson(Long id, String name, Boolean gender, String card, Integer age, Date comeTime, String reason, Date updateTime, Long operatorId, Boolean isDelete) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -56,11 +56,11 @@ public class ForeignPerson {
         this.name = name == null ? null : name.trim();
     }
 
-    public Byte getGender() {
+    public Boolean getGender() {
         return gender;
     }
 
-    public void setGender(Byte gender) {
+    public void setGender(Boolean gender) {
         this.gender = gender;
     }
 
@@ -112,11 +112,11 @@ public class ForeignPerson {
         this.operatorId = operatorId;
     }
 
-    public Byte getIsDelete() {
+    public Boolean getIsDelete() {
         return isDelete;
     }
 
-    public void setIsDelete(Byte isDelete) {
+    public void setIsDelete(Boolean isDelete) {
         this.isDelete = isDelete;
     }
 }

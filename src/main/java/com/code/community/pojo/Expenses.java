@@ -17,9 +17,9 @@ public class Expenses {
 
     private Date updateTime;
 
-    private Byte isDelete;
+    private Boolean isDelete;
 
-    public Expenses(Long id, String reason, Double amount, Long operatorId, Integer payStyle, Date payTime, Date updateTime, Byte isDelete) {
+    public Expenses(Long id, String reason, Double amount, Long operatorId, Integer payStyle, Date payTime, Date updateTime, Boolean isDelete) {
         this.id = id;
         this.reason = reason;
         this.amount = amount;
@@ -90,11 +90,11 @@ public class Expenses {
         this.updateTime = updateTime;
     }
 
-    public Byte getIsDelete() {
+    public Boolean getIsDelete() {
         return isDelete;
     }
 
-    public void setIsDelete(Byte isDelete) {
+    public void setIsDelete(Boolean isDelete) {
         this.isDelete = isDelete;
     }
 }

@@ -15,9 +15,9 @@ public class Room {
 
     private Date updateTime;
 
-    private Byte isDelete;
+    private Boolean isDelete;
 
-    public Room(Long id, Long unitId, String name, Integer level, Date createTime, Date updateTime, Byte isDelete) {
+    public Room(Long id, Long unitId, String name, Integer level, Date createTime, Date updateTime, Boolean isDelete) {
         this.id = id;
         this.unitId = unitId;
         this.name = name;
@@ -79,11 +79,11 @@ public class Room {
         this.updateTime = updateTime;
     }
 
-    public Byte getIsDelete() {
+    public Boolean getIsDelete() {
         return isDelete;
     }
 
-    public void setIsDelete(Byte isDelete) {
+    public void setIsDelete(Boolean isDelete) {
         this.isDelete = isDelete;
     }
 }

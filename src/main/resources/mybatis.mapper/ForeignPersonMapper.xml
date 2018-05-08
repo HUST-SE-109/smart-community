@@ -5,14 +5,14 @@
     <constructor >
       <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
       <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="gender" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <arg column="gender" jdbcType="BIT" javaType="java.lang.Boolean" />
       <arg column="card" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="age" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="come_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="reason" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="operator_id" jdbcType="BIGINT" javaType="java.lang.Long" />
-      <arg column="is_delete" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <arg column="is_delete" jdbcType="BIT" javaType="java.lang.Boolean" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -111,10 +111,10 @@
       card, age, come_time, 
       reason, update_time, operator_id, 
       is_delete)
-    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{gender,jdbcType=TINYINT}, 
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{gender,jdbcType=BIT}, 
       #{card,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{comeTime,jdbcType=TIMESTAMP}, 
       #{reason,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{operatorId,jdbcType=BIGINT}, 
-      #{isDelete,jdbcType=TINYINT})
+      #{isDelete,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.code.community.pojo.ForeignPerson" >
     insert into foreign_person
@@ -158,7 +158,7 @@
         #{name,jdbcType=VARCHAR},
       </if>
       <if test="gender != null" >
-        #{gender,jdbcType=TINYINT},
+        #{gender,jdbcType=BIT},
       </if>
       <if test="card != null" >
         #{card,jdbcType=VARCHAR},
@@ -179,7 +179,7 @@
         #{operatorId,jdbcType=BIGINT},
       </if>
       <if test="isDelete != null" >
-        #{isDelete,jdbcType=TINYINT},
+        #{isDelete,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -199,7 +199,7 @@
         name = #{record.name,jdbcType=VARCHAR},
       </if>
       <if test="record.gender != null" >
-        gender = #{record.gender,jdbcType=TINYINT},
+        gender = #{record.gender,jdbcType=BIT},
       </if>
       <if test="record.card != null" >
         card = #{record.card,jdbcType=VARCHAR},
@@ -220,7 +220,7 @@
         operator_id = #{record.operatorId,jdbcType=BIGINT},
       </if>
       <if test="record.isDelete != null" >
-        is_delete = #{record.isDelete,jdbcType=TINYINT},
+        is_delete = #{record.isDelete,jdbcType=BIT},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -231,14 +231,14 @@
     update foreign_person
     set id = #{record.id,jdbcType=BIGINT},
       name = #{record.name,jdbcType=VARCHAR},
-      gender = #{record.gender,jdbcType=TINYINT},
+      gender = #{record.gender,jdbcType=BIT},
       card = #{record.card,jdbcType=VARCHAR},
       age = #{record.age,jdbcType=INTEGER},
       come_time = #{record.comeTime,jdbcType=TIMESTAMP},
       reason = #{record.reason,jdbcType=VARCHAR},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       operator_id = #{record.operatorId,jdbcType=BIGINT},
-      is_delete = #{record.isDelete,jdbcType=TINYINT}
+      is_delete = #{record.isDelete,jdbcType=BIT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -250,7 +250,7 @@
         name = #{name,jdbcType=VARCHAR},
       </if>
       <if test="gender != null" >
-        gender = #{gender,jdbcType=TINYINT},
+        gender = #{gender,jdbcType=BIT},
       </if>
       <if test="card != null" >
         card = #{card,jdbcType=VARCHAR},
@@ -271,7 +271,7 @@
         operator_id = #{operatorId,jdbcType=BIGINT},
       </if>
       <if test="isDelete != null" >
-        is_delete = #{isDelete,jdbcType=TINYINT},
+        is_delete = #{isDelete,jdbcType=BIT},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -279,14 +279,14 @@
   <update id="updateByPrimaryKey" parameterType="com.code.community.pojo.ForeignPerson" >
     update foreign_person
     set name = #{name,jdbcType=VARCHAR},
-      gender = #{gender,jdbcType=TINYINT},
+      gender = #{gender,jdbcType=BIT},
       card = #{card,jdbcType=VARCHAR},
       age = #{age,jdbcType=INTEGER},
       come_time = #{comeTime,jdbcType=TIMESTAMP},
       reason = #{reason,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       operator_id = #{operatorId,jdbcType=BIGINT},
-      is_delete = #{isDelete,jdbcType=TINYINT}
+      is_delete = #{isDelete,jdbcType=BIT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

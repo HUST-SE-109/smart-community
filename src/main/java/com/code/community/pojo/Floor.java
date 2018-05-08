@@ -13,9 +13,9 @@ public class Floor {
 
     private Date updateTime;
 
-    private Byte isDelete;
+    private Boolean isDelete;
 
-    public Floor(Long id, String name, Long communityId, Date createTime, Date updateTime, Byte isDelete) {
+    public Floor(Long id, String name, Long communityId, Date createTime, Date updateTime, Boolean isDelete) {
         this.id = id;
         this.name = name;
         this.communityId = communityId;
@@ -68,11 +68,11 @@ public class Floor {
         this.updateTime = updateTime;
     }
 
-    public Byte getIsDelete() {
+    public Boolean getIsDelete() {
         return isDelete;
     }
 
-    public void setIsDelete(Byte isDelete) {
+    public void setIsDelete(Boolean isDelete) {
         this.isDelete = isDelete;
     }
 }

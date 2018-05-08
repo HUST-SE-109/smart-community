@@ -23,9 +23,9 @@ public class FacilityInfo {
 
     private Date updateTime;
 
-    private Byte isDelete;
+    private Boolean isDelete;
 
-    public FacilityInfo(Long id, String name, String contractor, String phone, String operator, Date deliveryTime, Long facilityAdmin, Double amount, Date createTime, Date updateTime, Byte isDelete) {
+    public FacilityInfo(Long id, String name, String contractor, String phone, String operator, Date deliveryTime, Long facilityAdmin, Double amount, Date createTime, Date updateTime, Boolean isDelete) {
         this.id = id;
         this.name = name;
         this.contractor = contractor;
@@ -123,11 +123,11 @@ public class FacilityInfo {
         this.updateTime = updateTime;
     }
 
-    public Byte getIsDelete() {
+    public Boolean getIsDelete() {
         return isDelete;
     }
 
-    public void setIsDelete(Byte isDelete) {
+    public void setIsDelete(Boolean isDelete) {
         this.isDelete = isDelete;
     }
 }

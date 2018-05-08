@@ -7,7 +7,7 @@ public class User {
 
     private String name;
 
-    private Byte gender;
+    private Boolean gender;
 
     private String card;
 
@@ -25,7 +25,7 @@ public class User {
 
     private Date checkInTime;
 
-    private Byte hasMarried;
+    private Boolean hasMarried;
 
     private Integer relation;
 
@@ -33,9 +33,9 @@ public class User {
 
     private Date updateTime;
 
-    private Byte isDelete;
+    private Boolean isDelete;
 
-    public User(Long id, String name, Byte gender, String card, String nation, Long roomId, Integer politicalStatus, String phone, String company, String companyLocation, Date checkInTime, Byte hasMarried, Integer relation, Date createTime, Date updateTime, Byte isDelete) {
+    public User(Long id, String name, Boolean gender, String card, String nation, Long roomId, Integer politicalStatus, String phone, String company, String companyLocation, Date checkInTime, Boolean hasMarried, Integer relation, Date createTime, Date updateTime, Boolean isDelete) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -74,11 +74,11 @@ public class User {
         this.name = name == null ? null : name.trim();
     }
 
-    public Byte getGender() {
+    public Boolean getGender() {
         return gender;
     }
 
-    public void setGender(Byte gender) {
+    public void setGender(Boolean gender) {
         this.gender = gender;
     }
 
@@ -146,11 +146,11 @@ public class User {
         this.checkInTime = checkInTime;
     }
 
-    public Byte getHasMarried() {
+    public Boolean getHasMarried() {
         return hasMarried;
     }
 
-    public void setHasMarried(Byte hasMarried) {
+    public void setHasMarried(Boolean hasMarried) {
         this.hasMarried = hasMarried;
     }
 
@@ -178,11 +178,11 @@ public class User {
         this.updateTime = updateTime;
     }
 
-    public Byte getIsDelete() {
+    public Boolean getIsDelete() {
         return isDelete;
     }
 
-    public void setIsDelete(Byte isDelete) {
+    public void setIsDelete(Boolean isDelete) {
         this.isDelete = isDelete;
     }
 }
